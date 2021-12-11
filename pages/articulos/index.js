@@ -10,22 +10,16 @@ const [articles, setArticles] = useState([])
   useEffect(
     () => 
     onSnapshot((collection(db,'cities')),(snapshot) => 
-      setArticles(snapshot.docs.map((doc) => doc.data())
+      setArticles(snapshot.docs.map((doc) => ({...doc.data(), id: doc.id}))
       )
     ), []
   )
   return (
     <Layaout>
+      <h1 className="text-center my-4">Articulos</h1>
     <div >
       {console.log(articles)}
    <GroupCard cards={articles}></GroupCard>
-      <ul>
-        {articles.map((article) => (
-          <l1 key={article.id}>
-              <h1 > {article.title} </h1>
-          </l1>
-        ))}
-      </ul>
     </div>
     </Layaout>
   );
