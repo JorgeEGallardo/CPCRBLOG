@@ -1,32 +1,34 @@
-import Image from "next/image"
-import Link from "next/dist/client/link"
+import Image from "next/image";
+import Link from "next/dist/client/link";
+import styles from "../styles/Home.module.css";
 const Card = (props) => {
-    return (
-        <Link 
-        href={
-            { 
-                pathname: '/articulos/articulo', 
-                query: { id: props.cardID } 
-            }
-            }>
-        <div className="card mx-2 comp_card bg-dark  ">
+  return (
+    <Link
+      href={{
+        pathname: "/articulos/articulo",
+        query: { id: props.cardID },
+      }}
+    >
+      <div className={"card mx-2 comp_card bg-dark " + styles.pointer}>
         <Image
-                    src={"/images/" + props.image}
-                    width='500'
-                    height='400'
-                    fill='respnsive'
-                    className="card-img-top "
-                    objectFit={"contain"}
-                    alt={props.title}
-                  />
-        
+          src={"/images/" + props.image}
+          width="500"
+          height="400"
+          fill="respnsive"
+          className="card-img-top "
+          objectFit={"contain"}
+          alt={props.title}
+        />
+
         <div className="card-body">
           <h5 className="card-title text-info">{props.title}</h5>
           <p className="card-text ">{props.txt}</p>
-          <p className="card-text text-secundary "><small className="text-muted">Last updated 3 mins ago</small></p>
+          <p className="card-text text-secundary ">
+            <small className="text-muted">Last updated 3 mins ago</small>
+          </p>
         </div>
       </div>
-      </Link>
-    )
-}
-export default Card
+    </Link>
+  );
+};
+export default Card;
